@@ -13,7 +13,7 @@ from pytgcalls.types.input_stream import InputStream
 
 ACTV_CALLS = []
 
-@Client.on_message(command(["pause", "jeda"]) & other_filters)
+@Client.on_message(command(["pause", "tamdung"]) & other_filters)
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -22,16 +22,16 @@ async def pause(_, message: Message):
     await message.reply_text("**Đã tạm dừng bài hát thành công** ⏸️ ".format( message.from_user.mention ), )
 
 
-@Client.on_message(command(["resume", "lanjutkan"]) & other_filters)
+@Client.on_message(command(["resume", "tieptuc"]) & other_filters)
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
     await message.delete()
     await callsmusic.pytgcalls.resume_stream(message.chat.id)
-    await message.reply_text("**Musik berhasil dilanjutkan** ▶️".format( message.from_user.mention ), )
+    await message.reply_text("**Tiếp tục phát nhạc thành công** ▶️".format( message.from_user.mention ), )
 
 
-@Client.on_message(command(["end", "berhenti"]) & other_filters)
+@Client.on_message(command(["end", "tatnhac"]) & other_filters)
 @errors
 @authorized_users_only
 
@@ -46,7 +46,7 @@ async def stop(_, message: Message):
     await message.reply_text("**Bài hát đã kết thúc thành công** ⏹️".format(
       message.from_user.mention ), )
 
-@Client.on_message(command(["skip", "lewati"]) & other_filters)
+@Client.on_message(command(["skip", "boqua"]) & other_filters)
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
@@ -56,7 +56,7 @@ async def skip(_, message: Message):
     for x in callsmusic.pytgcalls.active_calls:
         ACTV_CALLS.append(int(x.chat_id))
     if int(chat_id) not in ACTV_CALLS:
-        await message.reply_text("**Không có bài hát nào để bỏ qua  !**")
+        await message.reply_text("**Không có bài hát nào để bỏ qua !**")
     else:
         queues.task_done(chat_id)
         
