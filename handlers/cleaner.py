@@ -17,9 +17,9 @@ async def clear_downloads(_, message: Message):
     if ls_dir:
         for file in os.listdir(downloads):
             os.remove(os.path.join(downloads, file))
-        await message.reply_text("✅ **Menghapus semua file download {} database**".format(bn) )
+        await message.reply_text("✅ **Xóa tất cả các tệp đã tải xuống {} database**".format(bn) )
     else:
-        await message.reply_text("❌ **Tidak ada file download**")
+        await message.reply_text("❌ **Không có tệp tải xuống**")
 
         
 @Client.on_message(command(["rmw", "clean"]) & ~filters.edited)
@@ -31,9 +31,9 @@ async def clear_raw(_, message: Message):
     if ls_dir:
         for file in os.listdir(raw_files):
             os.remove(os.path.join(raw_files, file))
-        await message.reply_text("✅ **Menghapus semua file RAW {}**".format(bn) )
+        await message.reply_text("✅ **Xóa tất cả các tệp tin RAW {}**".format(bn) )
     else:
-        await message.reply_text("❌ **Tidak ada file RAW** ")
+        await message.reply_text("❌ **Không có tệp RAW** ")
 
 
 @Client.on_message(command(["clear", " rmp"]) & ~filters.edited)
@@ -46,6 +46,6 @@ async def cleanup(_, message: Message):
     if ls_dir:
         for dta in os.listdir(pth):
             os.system("rm -rf *.webm *.jpg")
-        await message.reply_text("✅**Dibersihkan**")
+        await message.reply_text("✅**Không có tệp**")
     else:
-        await message.reply_text("✅**Dibersihkan**")
+        await message.reply_text("✅**Không có tệp**")
