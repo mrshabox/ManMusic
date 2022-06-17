@@ -16,22 +16,17 @@ async def pmPermit(client: USER, message: Message):
             chat_id = message.chat.id
             if chat_id in pchats:
                 return
-            await USER.send_message(
+            await USER.send_photo(
                 message.chat.id,
-                f"👋 Hai {message.from_user.mention()},\n\nSaya adalah akun asisten dari [{bn}](t.me/{lel}).\n\nJangan mencoba spam di PESAN PRIBADI , supaya tidak terblokir ☠️\n\nAsisten tidak masuk ke grup? lapor\n➥[Kesini](https://t.me/AzumanProjects/39)\n\nJika terblok Hubungi\n➥[Owner](t.me/erojistrix).",
+                photo="https://telegra.ph/file/df6036600005afb41ac64.jpg", 
+                caption=f"👋 hi {message.from_user.mention()},\n\n**Tải app live: XEMLIVE.XYZ**",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🤖 Bot phát nhạc", url=f"https://t.me/{lel}"
-                    ),
-                    InlineKeyboardButton(
-                        "❤ Thả Tim", url="https://t.me/thatim"
+                        "Xe gái show hàng", url="https://xemlive.xyz"
                     )
-                ],[ 
-                    InlineKeyboardButton(
-                        "👤 Blog", url=f"https://www.teleblog.xyz"
-                    )]
+                ]
             ]
         ),
 
