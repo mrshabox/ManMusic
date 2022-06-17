@@ -200,15 +200,9 @@ async def play(_, message: Message):
     if int(chat_id) in ACTV_CALLS:
         position = await queues.put(chat_id, file=file_path)
         await message.reply_text(
-            text=f"🚧 **LAGU DALAM ANTRIAN KE {position} **\n\n💡 ╔ **Judul :**[{title[:65]}]({url})\n\n🕕 ╠ ** Durasi :** `{duration}` **Menit**\n👤 ╚ ** Diputar oleh : **{chumtiya}\n\n⚡𝘱𝘰𝘸𝘦𝘳𝘦𝘥 𝘣y [𝘼𝙯𝙪𝙢𝙖𝙣-𝙋𝙧𝙤𝙟𝙚𝙘𝙩](https://t.me/azumanprojects)",
+            text=f"🚧 **LAGU DALAM ANTRIAN KE {position} **\n\n💡 ╔ **Judul :**[{title[:65]}]({url})\n\n🕕 ╠ ** Durasi :** `{duration}` **Menit**\n👤 ╚ ** Thời lượng : **{chumtiya}",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("📝 ᴄᴏᴍᴍᴀɴᴅ-ʟɪꜱᴛ", url=f"https://telegra.ph/COMMAND-LIST-06-10")
-                ],
-                [
-                    InlineKeyboardButton("ᴏꜰꜰɪᴄɪᴀʟ ɢʀᴏᴜᴘ", url=f"https://t.me/{SUPPORT_GROUP}"),
-                    InlineKeyboardButton("ᴏꜰꜰɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/azumanprojects")
-                ],
                 [InlineKeyboardButton("🗑️ ᴛᴜᴛᴜᴘ", callback_data="close_play")
                 ],
             ]
@@ -227,16 +221,10 @@ async def play(_, message: Message):
             )
 
         await message.reply_text(
-            text=f"**📡 STREAMING DI :** `{message.chat.title}`\n\n💡 ╔ **Judul :** [{title[:65]}]({url})\n🕕 ╠ **Durasi :** `{duration}` Menit\n👤 ╚ **Diputar oleh** : {chumtiya}\n\n⚡𝘱𝘰𝘸𝘦𝘳𝘦𝘥 𝘣y [𝘼𝙯𝙪𝙢𝙖𝙣-𝙋𝙧𝙤𝙟𝙚𝙘𝙩](https://t.me/azumanprojects)",
+            text=f"**📡 STREAMING DI :** `{message.chat.title}`\n\n💡 ╔ **Judul :** [{title[:65]}]({url})\n🕕 ╠ **Durasi :** `{duration}` Menit\n👤 ╚ **Diputar oleh** : {chumtiya}",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("📝 ᴄᴏᴍᴍᴀɴᴅ-ʟɪꜱᴛ", url=f"https://telegra.ph/COMMAND-LIST-06-10")
-                ],
-                [
-                    InlineKeyboardButton("ᴏꜰꜰɪᴄɪᴀʟ ɢʀᴏᴜᴘ", url=f"https://t.me/{SUPPORT_GROUP}"),
-                    InlineKeyboardButton("ᴏꜰꜰɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/azumanprojects")
-                ],
-                [InlineKeyboardButton("🗑️ ᴛᴜᴛᴜᴘ", callback_data="close_play")
+                [InlineKeyboardButton("🗑️ ĐÓNG", callback_data="close_play")
                 ],
             ]
         ),
