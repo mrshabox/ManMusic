@@ -23,14 +23,14 @@ async def pmPermit(client: USER, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "🤖 Bot", url=f"https://t.me/{lel}"
+                        "🤖 Bot phát nhạc", url=f"https://t.me/{lel}"
                     ),
                     InlineKeyboardButton(
-                        "📥 Support", url="https://t.me/AzumanProjects"
+                        "❤ Thả Tim", url="https://t.me/thatim"
                     )
                 ],[ 
                     InlineKeyboardButton(
-                        "👤 Developer", url=f"https://t.me/erojistrix"
+                        "👤 Blog", url=f"https://www.teleblog.xyz"
                     )]
             ]
         ),
@@ -47,11 +47,11 @@ async def bye(client: Client, message: Message):
         queryy = text[1]
         if queryy == "enable":
             PMSET = True
-            await message.reply_text("**✅ PM-PERMIT diaktifkan...**")
+            await message.reply_text("**✅ PM-PERMIT đã được chấp nhận...**")
             return
         if queryy == "disable":
             PMSET = None
-            await message.reply_text("**❎ PM-PERMIT dinonaktifkan...**")
+            await message.reply_text("**❎ PM-PERMIT đã bị từ chối...**")
             return
 
 @USER.on_message(filters.text & filters.private & filters.me)        
@@ -59,7 +59,7 @@ async def autopmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if not chat_id in pchats:
         pchats.append(chat_id)
-        await message.reply_text("**✅ Disetujui pesan pribadi oleh admin...**")
+        await message.reply_text("**✅ Tin nhắn riêng tư được phê duyệt bởi quản trị viên...**")
         return
     message.continue_propagation()    
     
@@ -78,6 +78,6 @@ async def rmpmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if chat_id in pchats:
         pchats.remove(chat_id)
-        await message.reply_text("**❎ Ditolak untuk PM...**")
+        await message.reply_text("**❎ Được chấp thuận cho PM..**")
         return
     message.continue_propagation()
