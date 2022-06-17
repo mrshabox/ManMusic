@@ -55,7 +55,7 @@ async def play(_, message: Message):
 
     await message.delete()
 
-    fallen = await message.reply("⏳**Sedang memproses mohon tunggu...**")
+    fallen = await message.reply("⏳**Đang xử lí .. Xin vui lòng chờ đợi...**")
 
     chumtiya = message.from_user.mention
 
@@ -65,7 +65,7 @@ async def play(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "ManMusic"
+        user.first_name = "TgramMusic"
     usar = user
     wew = usar.id
     try:
@@ -77,24 +77,24 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await fallen.edit(
-                        "<b>Jadikan saya sebagai full admin di grup anda !</b>")
+                        "<b>Đặt tôi làm quản trị viên đầy đủ trong nhóm của bạn !</b>")
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "Asisten berhasil bergabung ke Grup anda ✅\n\nUntuk perintah atau command list bisa cek [Disini](https://telegra.ph/COMMAND-LIST-06-10)")
+                        message.chat.id, "Trợ lý đã tham gia thành công Nhóm của bạn ✅")
 
                 except UserAlreadyParticipant:
                     pass
                 except Exception:
                     await fallen.edit(
-                        f"<b>Asisten belum bergabung ke Grup anda ❎, Ketikan /login untuk mengundang asisten.")
+                        f"<b>Trợ lý chưa tham gia Nhóm của bạn ❎, nhấp /login mời trợ lý.")
     try:
         await USER.get_chat(chid)
     except Exception as e:
         await fallen.edit(
-            f"<i>Asisten gagal bergabung ke Grup anda !</i>\n\nAlasan : {e}")
+            f"<i>Trợ lý không tham gia được Nhóm của bạn !</i>\n\nLý do : {e}")
         return
     
     audio = (
@@ -107,7 +107,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❌ Video lebih dari {DURATION_LIMIT} menit , tidak diizinkan untuk memutar !"
+                f"❌ Các video vượt {DURATION_LIMIT} phút , không được phép chơi !"
             )
 
         file_name = get_file_name(audio)
@@ -148,16 +148,16 @@ async def play(_, message: Message):
 
         if (dur / 60) > DURATION_LIMIT:
             await fallen.edit(
-                f"❌ Video lebih dari {DURATION_LIMIT} menit , tidak diizinkan untuk memutar !"
+                f"❌ Video vượt {DURATION_LIMIT} phút , là không được phép !"
             )
             return
         file_path = await converter.convert(youtube.download(url))
     else:
         if len(message.command) < 2:
             return await fallen.edit(
-                "Ketikan nama musik untuk memutar musik"
+                "Nhập tên nhạc để phát nhạc"
             )
-        await fallen.edit("🗿")
+        await fallen.edit("🔥")
         query = message.text.split(None, 1)[1]
         # print(query)
         try:
@@ -182,14 +182,14 @@ async def play(_, message: Message):
 
         except Exception as e:
             await fallen.edit(
-                "**Lagu tidak ditemukan ❌\n\nCoba untuk menuliskan Judul lagu lebih jelas !**"
+                "**Bài hát không được tìm thấy ❌\n\nCố gắng viết tên bài hát rõ ràng hơn !**"
             )
             print(str(e))
             return
 
         if (dur / 60) > DURATION_LIMIT:
             await fallen.edit(
-                f"❌ Video lebih dari {DURATION_LIMIT} menit , tidak diizinkan untuk memutar !"
+                f"❌ Video vượt {DURATION_LIMIT} phút , là ko đc phép !"
             )
             return
         file_path = await converter.convert(youtube.download(url))
@@ -200,10 +200,10 @@ async def play(_, message: Message):
     if int(chat_id) in ACTV_CALLS:
         position = await queues.put(chat_id, file=file_path)
         await message.reply_text(
-            text=f"🚧 **LAGU DALAM ANTRIAN KE {position} **\n\n💡 ╔ **Judul :**[{title[:65]}]({url})\n\n🕕 ╠ ** Durasi :** `{duration}` **Menit**\n👤 ╚ ** Thời lượng : **{chumtiya}",
+            text=f"🚧 **ĐÃ THÊM VÀO HÀNG CHỜ {position} **\n\n💡 ╔ **Tên bài bát :**[{title[:40]}]({url})\n\n🕕 ╠ ** Thời lượng :** `{duration}` **phút**\n👤 ╚ ** Yêu cầu : **{chumtiya}",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("🗑️ ᴛᴜᴛᴜᴘ", callback_data="close_play")
+                [InlineKeyboardButton("🗑️ Đóng", callback_data="close_play")
                 ],
             ]
         ),
@@ -221,7 +221,7 @@ async def play(_, message: Message):
             )
 
         await message.reply_text(
-            text=f"**📡 STREAMING DI :** `{message.chat.title}`\n\n💡 ╔ **Judul :** [{title[:65]}]({url})\n🕕 ╠ **Durasi :** `{duration}` Menit\n👤 ╚ **Diputar oleh** : {chumtiya}",
+            text=f"**📡 PHÁT HIỆN TẠI:** `{message.chat.title}`\n\n💡 ╔ **Tiêu đề :** [{title[:40]}]({url})\n🕕 ╠ **Thời lượng :** `{duration}` phút\n👤 ╚ **Yêu cầu bởi** : {chumtiya}",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("🗑️ ĐÓNG", callback_data="close_play")
