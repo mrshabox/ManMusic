@@ -13,7 +13,7 @@ async def inline(client: Client, query: InlineQuery):
         await client.answer_inline_query(
             query.id,
             results=answers,
-            switch_pm_text="Ketikan judul nama YouTube ...",
+            switch_pm_text="Nhập tiêu đề tên YouTube ...",
             switch_pm_parameter="help",
             cache_time=0
         )
@@ -46,6 +46,6 @@ async def inline(client: Client, query: InlineQuery):
             await query.answer(
                 results=answers,
                 cache_time=0,
-                switch_pm_text="Error : Waktu habis ",
+                switch_pm_text="Error : Thời gian đã hết ",
                 switch_pm_parameter="",
             )
