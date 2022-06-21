@@ -4,7 +4,7 @@
 <h2 align="center"><b>The Telegram Bot to play music in Voice chat Group</b></h2>
 
 <p align="center">
-  [Sshagod](https://www.shagod.com)
+  https://www.shagod.com
 </p>
 
 ### Preview
@@ -14,7 +14,7 @@
 </p>
 
 ### For all command :
-- `/mainkan or /play` - Ketikan judul lagu atau URL YouTube
+- `/play` - Ketikan judul lagu atau URL YouTube
 - `/download or /song` - Ketikan judul lagu atau URL YouTube
 - `/cari or /search` - Ketikan judul lagu atau URL YouTube
 - `/ping` or Untuk mengecek bot (hidup/mati) / Check the bot
